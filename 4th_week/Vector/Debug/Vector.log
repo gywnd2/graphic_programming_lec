@@ -1,0 +1,6 @@
+﻿  lec2_vectest0.cpp
+C:\Users\skarn\OneDrive - 중앙대학교\2021\1학기\그래픽프로그래밍설계\Q2\Vector\lec2_vectest0.cpp(16,20): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\skarn\OneDrive - 중앙대학교\2021\1학기\그래픽프로그래밍설계\Q2\Vector\lec2_vectest0.cpp(25,11): error C2371: 'b': 재정의. 기본 형식이 다릅니다.
+C:\Users\skarn\OneDrive - 중앙대학교\2021\1학기\그래픽프로그래밍설계\Q2\Vector\lec2_vectest0.cpp(16): message : 'b' 선언을 참조하십시오.
+C:\Users\skarn\OneDrive - 중앙대학교\2021\1학기\그래픽프로그래밍설계\Q2\Vector\lec2_vectest0.cpp(27,12): error C2088: '<<': class에 맞지 않습니다.
+C:\Users\skarn\OneDrive - 중앙대학교\2021\1학기\그래픽프로그래밍설계\Q2\Vector\lec2_vectest0.cpp(27,46): error C2088: '+': class에 맞지 않습니다.
