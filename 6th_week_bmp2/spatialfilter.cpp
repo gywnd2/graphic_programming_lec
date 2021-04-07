@@ -15,12 +15,12 @@ unsigned char* blur(unsigned char** pixelsptr, int width, int height, int bytesP
 		for (x = 2; x < width - 2; x++) {
 
 			colorr.r = 0.0; colorr.g = 0.0; colorr.b = 0.0;
-			for (int xa = -1; xa < 2; xa++) {
-				for (int ya = -1; ya < 2; ya++) {
+			for (int xa = -2; xa < 3; xa++) {
+				for (int ya = -2; ya < 3; ya++) {
 					loc = bytesPerPixel * ((y + ya) * width + x + xa);
-					colorr.r += 1.0 / 9.0 * pixels[loc + 2];
-					colorr.g += 1.0 / 9.0 * pixels[loc + 1];
-					colorr.b += 1.0 / 9.0 * pixels[loc + 0];
+					colorr.r += 1.0 / 25.0 * pixels[loc + 2];
+					colorr.g += 1.0 / 25.0 * pixels[loc + 1];
+					colorr.b += 1.0 / 25.0 * pixels[loc + 0];
 				}
 			}
 			loc = bytesPerPixel * ((y)* width + x);
@@ -39,7 +39,7 @@ unsigned char* sharpen(unsigned char** pixelsptr, int width, int height, int byt
 	unsigned char* pixels, *result;
 	rgb colorr = { 0.0, 0.0, 0.0 };
 	pixels = *pixelsptr;
-	float matrix[3][3] = { {-1.0, -1.0, -1.0}, {-1.0, 9.0, -1.0}, {-1.0, -1.0, -1.0} };
+	float matrix[3][3] = { {-5.0, -5.0, -5.0}, {-5.0, 40.0, -5.0}, {-5.0, -5.0, -5.0} };
  
 	result = (unsigned char*)malloc(width * height * bytesPerPixel);
 
