@@ -70,12 +70,12 @@ unsigned char* backgrounddark(unsigned char** pixelsptr, int width, int height, 
 // My filter
 unsigned char* myfilter(unsigned char** pixelsptr, int width, int height, int bytesPerPixel);
 
+//blur, sharpen
 unsigned char* blur(unsigned char** pixelsptr, int width, int height, int bytesPerPixel);
 unsigned char* sharpen(unsigned char** pixelsptr, int width, int height, int bytesPerPixel);;;
 
-//에지 검출
-void edgedetect(unsigned char** pixelsptr, int width, int height, int bytesPerPixel);
-
+// HSB값 출력
 void showHSBinfo(unsigned char** pixelsptr, int width, int height, int bytesPerPixel);
 
-unsigned char* myfilmeffect(unsigned char** pixelsptr, int width, int height, int bytesPerPixel);
+//myfilter
+unsigned char* myfilmeffect(unsigned char** pixelsptr, int width, int height, int bytesPerPixel, int ratio);
