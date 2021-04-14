@@ -67,9 +67,6 @@ unsigned char* contrast(unsigned char** pixelsptr, int width, int height, int by
 // πË∞Ê »Â∏Æ∞‘    0  +100
 unsigned char* backgrounddark(unsigned char** pixelsptr, int width, int height, int bytesPerPixel, int ratio);
 
-// My filter
-unsigned char* myfilter(unsigned char** pixelsptr, int width, int height, int bytesPerPixel);
-
 //blur, sharpen
 unsigned char* blur(unsigned char** pixelsptr, int width, int height, int bytesPerPixel);
 unsigned char* sharpen(unsigned char** pixelsptr, int width, int height, int bytesPerPixel);;;
