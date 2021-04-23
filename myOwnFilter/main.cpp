@@ -23,9 +23,9 @@ int main()
 			system("cls");
 		}
 		else {
-			ReadImage("C:/repo/graphic_programming_lec/myOwnFilter/images/target3.bmp", &pixels, &width, &height, &bytesPerPixel);
+			ReadImage("C:/repo/graphic_programming_lec/myOwnFilter/images/1.bmp", &pixels, &width, &height, &bytesPerPixel);
 			pixels = myfilmeffect(&pixels, width, height, bytesPerPixel, ratio);
-			WriteImage("C:/repo/graphic_programming_lec/myOwnFilter/images/target_result3.bmp", pixels, width, height, bytesPerPixel);
+			WriteImage("C:/repo/graphic_programming_lec/myOwnFilter/images/1_result.bmp", pixels, width, height, bytesPerPixel);
 			std::cout << "이미지 수정됨";
 			free(pixels);
 			break;
