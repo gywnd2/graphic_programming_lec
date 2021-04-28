@@ -231,23 +231,25 @@ unsigned char* backgrounddark(unsigned char** pixelsptr, int width, int height, 
 		for (x = 0; x < width; x++) {
 
 			loc = bytesPerPixel * (y * width + x);
-			rgb rgb = { pixels[loc + 2], pixels[loc + 1], pixels[loc] };
-			hsb hsb = rgb2hsb(rgb);
-			// To Do
-			if (y <= height * 0.05 || y >= height * 0.95) {
-				hsb.b = hsb.b * (1.0 - 0.3 * (float)(ratio) / 100.0);
+
+			float distx = (float)x / (float)width - 0.5;
+			float disty = (float)y / (float)height - 0.5;
+			if (sqrt(distx * distx + disty * disty) > 0.4) {
+
+				for (i = 0; i < bytesPerPixel; i++) {
+					temp = pixels[loc + i];
+
+					temp = temp - 0.3 * (float)ratio / 100.0;
+
+					temp = (temp > 255) ? 255 : (temp < 0) ? 0 : temp;
+
+					result[loc + i] = temp;
+				}
 			}
-			else if (x <= width * 0.05 || x >= width * 0.95) {
-				hsb.b = hsb.b * (1.0 - 0.3 * (float)(ratio) / 100.0);
-			}
-			hsb.b = (hsb.b > 1.0) ? 1.0 : (hsb.b < 0.0) ? 0.0 : hsb.b;
-			rgb = hsb2rgb(hsb);
-			result[loc] = rgb.b; result[loc + 1] = rgb.g; result[loc + 2] = rgb.r;
 		}
 	}
 	return result;
 }
-
 // My filter
 unsigned char* myfilter(unsigned char** pixelsptr, int width, int height, int bytesPerPixel, int ratio)
 {

@@ -1,0 +1,9 @@
+﻿  main.cpp
+C:\repo\graphic_programming_lec\OpenGL 1.2\main.cpp(18,25): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\repo\graphic_programming_lec\OpenGL 1.2\main.cpp(20,25): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\repo\graphic_programming_lec\OpenGL 1.2\main.cpp(21,25): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+C:\repo\graphic_programming_lec\OpenGL 1.2\main.cpp(22,25): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\repo\graphic_programming_lec\OpenGL 1.2\main.cpp(23,25): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+C:\repo\graphic_programming_lec\OpenGL 1.2\main.cpp(24,25): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\repo\graphic_programming_lec\OpenGL 1.2\main.cpp(25,26): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+  OpenGL 1.2.vcxproj -> C:\repo\graphic_programming_lec\OpenGL 1.2\Debug\OpenGL 1.2.exe

@@ -8,9 +8,9 @@ int main()
 	int bytesPerPixel;
 	ReadImage("boy.bmp", &pixels, &width, &height, &bytesPerPixel);
 
-	pixels = backgrounddark(&pixels, width, height, bytesPerPixel, 100);
+	pixels = backgrounddark(&pixels, width, height, bytesPerPixel, 50);
 
-	WriteImage("boyshadow.bmp", pixels, width, height, bytesPerPixel);
+	WriteImage("boyshadow1.bmp", pixels, width, height, bytesPerPixel);
 
 	std::cout << "test";
 

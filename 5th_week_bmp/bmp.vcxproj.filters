@@ -15,21 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\imageProcessing\bmp.cpp">
+    <ClCompile Include="bmp.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\imageProcessing\color.cpp">
+    <ClCompile Include="color.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\imageProcessing\colorProcessing.cpp">
+    <ClCompile Include="colorProcessing.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\imageProcessing\main.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\imageProcessing\image.h">
+    <ClInclude Include="image.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

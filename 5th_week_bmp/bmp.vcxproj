@@ -139,13 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\imageProcessing\bmp.cpp" />
-    <ClCompile Include="..\imageProcessing\color.cpp" />
-    <ClCompile Include="..\imageProcessing\colorProcessing.cpp" />
-    <ClCompile Include="..\imageProcessing\main.cpp" />
+    <ClCompile Include="bmp.cpp" />
+    <ClCompile Include="color.cpp" />
+    <ClCompile Include="colorProcessing.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\imageProcessing\image.h" />
+    <ClInclude Include="image.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
