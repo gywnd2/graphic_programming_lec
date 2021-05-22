@@ -5,8 +5,8 @@
 #include "cg.h"
 #include "draw.h"
 
-int w = 600;
-int h = 600;
+int w = 800;
+int h = 800;
 
 struct polytype {
 	vector2D a, b;
@@ -31,12 +31,16 @@ void deletePolygon(bool deleteAll) {
 	}
 	//선택한 도형 삭제
 	else if (isSelected) {
+		//삭제할 시 삭제될 폴리곤의 표시 속성 off, isSelected 신호 off
 		polygon[selectedIndex].on = false; isSelected = false;
+		// 그려진 도형이 하나 이상일 시
 		if (index > 0) {
+			//가장 마지막에 그려진 도형이면 인덱스만 하나 줄여서 새 도형이 덮어 쓰여지도록 함
 			if (selectedIndex == index) {
 				index--;
 				if (index == 0) isFirst = true;
 			}
+			//순서가 중간에 있는 도형이면 가장 마지막에 그려진 도형부터 거슬러 올라가며 찾는다.
 			else {
 				for (int i = selectedIndex; i < index; i++) {
 					polygon[i] = polygon[i + 1];
@@ -44,7 +48,6 @@ void deletePolygon(bool deleteAll) {
 				index--;
 				if (index == 0) isFirst = true;
 			}
-			printf("current number of polygons : %d\n", index);
 			glClear(GL_COLOR_BUFFER_BIT);
 			glutPostRedisplay();
 		}
