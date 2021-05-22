@@ -96,7 +96,7 @@ void trapzoid(vector2D a, vector2D b)
 	glBegin(GL_TRIANGLES);
 	glVertex2f(a.x, b.y);
 	glVertex2f(a.x + 0.25 * width, a.y);
-	glVertex2f(a.x + 0.25 * width, b.y);
+	glVertex2f(a.x + 0.75 * width, b.y);
 	glEnd();
 	glBegin(GL_POLYGON);
 	glVertex2f(a.x + 0.25 * width, a.y);
@@ -140,24 +140,34 @@ void people(vector2D a, vector2D b) {
 		glVertex2f(x, y);
 	}
 	glEnd();
+	glLineWidth(3);
 	glBegin(GL_LINES);
+	
 	glVertex2f(a.x + 0.5 * width, a.y-0.05);
-	glVertex2f(a.x + 0.5 * width, a.y - 0.7 * width);
+	glVertex2f(a.x + 0.5 * width, a.y - 0.6 * width);
 	glEnd();
+	glLineWidth(3);
 	glBegin(GL_LINES);
+	
 	glVertex2f(a.x + 0.5 * width, a.y-0.05);
 	glVertex2f(a.x + 0.25 * width, a.y - 0.5 * width);
 	glEnd();
+	glLineWidth(3);
 	glBegin(GL_LINES);
+	
 	glVertex2f(a.x + 0.5 * width, a.y - 0.05);
 	glVertex2f(a.x + 0.75 * width, a.y - 0.5 * width);
 	glEnd();
+	glLineWidth(3);
 	glBegin(GL_LINES);
-	glVertex2f(a.x + 0.5 * width, a.y - 0.7 * width);
+	
+	glVertex2f(a.x + 0.5 * width, a.y - 0.6 * width);
 	glVertex2f(a.x + 0.3 * width, b.y);
 	glEnd();
+	glLineWidth(3);
 	glBegin(GL_LINES);
-	glVertex2f(a.x + 0.5 * width, a.y - 0.7 * width);
-	glVertex2f(a.x + 0.7 * width, b.y);
+	
+	glVertex2f(a.x + 0.5 * width, a.y - 0.6 * width);
+	glVertex2f(b.x - 0.3 * width, b.y);
 	glEnd();
 }

@@ -13,7 +13,6 @@ struct polytype {
 	int pmode;// 1: line, 2: triangle, 3:circle, 4:rectangle
 	vector3D color;
 	bool on = false;
-	bool isPeople = false;
 };
 
 polytype polygon[100];
@@ -22,13 +21,15 @@ bool isLeftButton = false, isSelected = false, isFirst = true, wasScaling = fals
 int mode = 1;
 vector3D color = vector3D(0.9, 0.9, 0.8);
 
+// 도형 삭제 함수
 void deletePolygon(bool deleteAll) {
+	// 전부 삭제 기능 (ESC)
 	if (deleteAll) {
 		index = 0;
-		printf("current number of polygons : %d\n", index);
 		glClear(GL_COLOR_BUFFER_BIT);
 		glutPostRedisplay();
 	}
+	//선택한 도형 삭제
 	else if (isSelected) {
 		polygon[selectedIndex].on = false; isSelected = false;
 		if (index > 0) {
@@ -74,12 +75,10 @@ void mydisplay()
 	glClear(GL_COLOR_BUFFER_BIT);
 	for (int i = 1; i <= index; i++) {
 		if (polygon[i].on == true) {
-
 			a = polygon[i].a;
 			b = polygon[i].b;
 			color = polygon[i].color;
 			mode = polygon[i].pmode;
-
 			glColor3f(color.x, color.y, color.z);
 			if (mode == 1) line(a, b);
 			else if (mode == 2) triangle(vector2D(a.x, b.y), vector2D((b.x + a.x) / 2, a.y), b);
@@ -92,18 +91,6 @@ void mydisplay()
 			else if (mode == 9) arrow(a, b);
 			else if (mode == 10) people(a, b);
 		}
-		if (polygon[i].isPeople) {
-			for (int i = 0; i < index; i++) {
-				if (polygon[i].isPeople == true) {
-					printf("polygon #%d is people", i);
-					for (float f = 0.0; f < 1.5; f += 0.0001) {
-						polygon[i].a.x += f;
-						polygon[i].b.x += f;
-					}
-				}
-			}
-		}
-		glutPostRedisplay();
 	}
 	glutSwapBuffers();
 }
@@ -213,7 +200,6 @@ void mykey(unsigned char key, int x, int y)
 	else if (key == 27) deletePolygon(true);
 	else if (key == 91) glClearColor(0.0, 0.0, 0.0, 0.0);
 	else if (key == 93) glClearColor(1.0, 1.0, 1.0, 0.0);
-	else if (key == 47) polygon[selectedIndex].isPeople = true;
 	else if (key == 'i') mode = 10;
 	else if (key == 'l') system("cls");
 	else if (key == 'h') showIndex(polygon);
@@ -286,8 +272,6 @@ int main(int argc, char** argv)
 	glutKeyboardFunc(mykey);
 	glutMouseFunc(mymouse);
 	glutMotionFunc(mymousemotion);
-
 	glutIdleFunc(mydisplay);
-
 	glutMainLoop();
 }
