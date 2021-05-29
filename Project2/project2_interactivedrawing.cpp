@@ -17,8 +17,8 @@ struct polytype {
 
 polytype polygon[100];
 int index = 0, selectedIndex;
-// 좌클릭/우클릭 여부, 도형 선택 여부, 첫번째 도형 여부, 드래그 크기조절 여부, 가운데 버튼 클릭 여부
-bool isLeftButton = false, isSelected = false, isFirst = true, wasScaling = false, isMiddleButton=false;
+// 좌클릭/우클릭 여부, 도형 선택 여부, 첫번째 도형 여부, 가운데 버튼 클릭 여부
+bool isLeftButton = false, isSelected = false, isFirst = true, isMiddleButton=false;
 int mode = 1;
 vector3D color = vector3D(0.9, 0.9, 0.8);
 
@@ -53,8 +53,8 @@ void deletePolygon(bool deleteAll) {
 			glutPostRedisplay();
 		}
 	}
-}
-// 그리기 함수
+}	  
+// 그리기 함수							
 void mydisplay()
 {
 	vector2D a, b;
@@ -131,22 +131,24 @@ void mymouse(int button, int state, int x, int y)
 void mymousemotion(int x, int y)
 {
 	float px, py;
+	// 윈도우 마우스 좌표를 OpenGL 좌표계로 변환
 	px = (float)x / (float)w * 2.0 - 1.0;
 	py = -(float)y / (float)h * 2.0 + 1.0;
-	//도형의 폭과 높이 저장
+
+	// 선택된 도형의 폭과 높이 저장(중심 좌표를 알아내기 위함)
 	float polyWidth = abs(polygon[selectedIndex].b.x - polygon[selectedIndex].a.x);
 	float polyHeight = abs(polygon[selectedIndex].a.y - polygon[selectedIndex].b.y);
-	// 좌클릭만 해당할 시(선택된 것 X)
+
+	// 좌클릭만 해당할 시(선택된 폴리곤이 없을 때)
 	if (isLeftButton && !isSelected && !isMiddleButton) {
 		polygon[index].b = vector2D(px, py);
 		polygon[index].on = true;
-		// 크기 조절 중이 아니었음을 명시
-		wasScaling = false;
 		glutPostRedisplay();
 	}
-	// 도형이 선택되고 우클릭시
+
+	// 도형이 선택되었고 우클릭시
 	else if (!isLeftButton && isSelected && !isMiddleButton) {
-		// 기존 도형의 안쪽에서 드래그 시 크기 감소
+		// 도형의 안쪽에서 드래그 시 크기 감소
 		if ((polygon[selectedIndex].a.x <= px && px <= polygon[selectedIndex].b.x) &&
 			(polygon[selectedIndex].b.y <= py && py <= polygon[selectedIndex].a.y))
 		{
@@ -166,8 +168,6 @@ void mymousemotion(int x, int y)
 			polygon[selectedIndex].b.y -= 0.01;
 			glutPostRedisplay();
 		}
-		// 드래그 했음을 명시
-		wasScaling = true;
 	}
 	// 도형이 선택되었고 가운데 버튼으로 드래그 시 이동
 	else if (isMiddleButton && isSelected) {
@@ -181,12 +181,9 @@ void mymousemotion(int x, int y)
 // 키보드 감지 함수
 void mykey(unsigned char key, int x, int y)
 {
-	// Q는 종료, 0~9 까지
-	// 삼각형, 타원, 사각형, 원, 십자, 반원, 사다리꼴, 화살표 도형과 사람 그림
-	// ESC / Delete는 각각 전체 삭제, 선택 도형 삭제
-	// [ , ] 는 배경 검은색, 흰색으로 변경
-	// r, g, b, c, y, m, w(흰색), k(검은색)
+	// Q는 종료
 	if ((key == 'Q') | (key == 'q')) exit(0);
+	// 0~9까지 삼각형, 타원, 사각형, 원, 십자, 반원, 사다리꼴, 화살표 도형과 사람 그림
 	else if (key == '1') mode = 1; // line
 	else if (key == '2') mode = 2;
 	else if (key == '3') mode = 3;
@@ -197,16 +194,24 @@ void mykey(unsigned char key, int x, int y)
 	else if (key == '8') mode = 8;
 	else if (key == '9') mode = 9;
 	else if (key == '0') mode = 10;
+
+	// Delete => 선택 도형 삭제
 	else if (key == 127) deletePolygon(false);
+
+	// Esc => 전체 도형 삭제
 	else if (key == 27) deletePolygon(true);
+
+	// [ , ] 는 배경 검은색, 흰색으로 변경
 	else if (key == 91) glClearColor(0.0, 0.0, 0.0, 0.0);
 	else if (key == 93) glClearColor(1.0, 1.0, 1.0, 0.0);
-	// 도형이 선택 되었다면 그 도형의 색상 변경
-	// 아니라면 새로 그릴 도형의 색깔을 지정
+
+	// r, g, b, c, y, m, w(흰색), k(검은색)
 	else if (key == 'r') {
+		// 도형이 선택 되었다면 그 도형의 색상 변경
 		if (isSelected) {
 			polygon[selectedIndex].color = vector3D(1.0, 0.0, 0.0);
 		}
+		// 아니라면 다음에 새로 그려질 도형의 색깔이 됨
 		else color = vector3D(1.0, 0.0, 0.0);
 	}
 	else if (key == 'y') {
