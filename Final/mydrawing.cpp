@@ -55,6 +55,7 @@ void ferrisCoach() {
 	glTranslatef(0.0, 0.15, 0.0);
 	glRotatef(10.0 * tx, 0.0, 0.0, 1.0);
 	glTranslatef(0.0, -0.15, 0.0);
+	// 원을 따라 생성 되는 중심점으로 관람차 여러개 생성
 	for (float f = 0.0; f < 2 * M_PI; f += 0.7) {
 		glPushMatrix();
 		glTranslatef(0.4 * cos(f), 0.15 + 0.4 * sin(f), 0.0);
@@ -223,6 +224,7 @@ void display()
 	ferrisWheel(vector2D(-0.3, -0.4), vector2D(0.3, -0.5));
 	// 캡슐
 	ferrisCoach();
+
 	// 가게 뒤편을 지나가는 사람들
 	glPushMatrix();
 	glTranslatef(0.2*tx, 0.0, 0.0);
